@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  flagd-app:
+    build: flagd-app
+    container_name: flagd-app
+    ports:
+      - 5002:5002
+    volumes:
+      - ./flagd/flagd.json:/flagd/flagd.json
+  flagd:
+    image: ghcr.io/open-feature/flagd:latest
+    container_name: flagd
+    command: 
+      - 'start'
+      - '--uri'
+      - 'http://flagd-app:5002/'
+    depends_on:
+      - flagd-app
+    ports:
+      - 8013:8013
+  app:
+    build: my-app
+    container_name: app
+    depends_on:
+      - flagd
+    ports:
+      - 5003:5003

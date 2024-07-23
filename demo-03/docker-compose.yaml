@@ -1,0 +1,48 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards-provisioning:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+  flagd:
+    image: ghcr.io/open-feature/flagd:latest
+    container_name: flagd
+    command: 
+      - 'start'
+      - '--uri'
+      - 'file:/etc/flagd/flagd.json'
+    ports:
+      - 8013:8013
+    volumes:
+      - ./flagd/flagd.json:/etc/flagd/flagd.json
+  app:
+    build: my-app
+    container_name: app
+    depends_on:
+      - flagd
+    ports:
+      - 5004:5004
+  
+volumes:
+  prom_data:
