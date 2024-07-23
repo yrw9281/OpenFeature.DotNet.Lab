@@ -12,7 +12,7 @@ builder.Services.UseHttpClientMetrics();
 var app = builder.Build();
 
 // Add flagd provider
-var flagdProvider = new FlagdProvider(new Uri("http://flagd:8013"));
+var flagdProvider = new FlagdProvider(new Uri("http://localhost:8013"));
 await OpenFeature.Api.Instance.SetProviderAsync(flagdProvider);
 
 if (app.Environment.IsDevelopment())

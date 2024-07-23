@@ -1,0 +1,50 @@
+# Deployment of a demo-app using our custom resources
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-feature-demo-deployment
+  labels:
+    app: open-feature-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-feature-demo
+  template:
+    metadata:
+      labels:
+        app: open-feature-demo
+      annotations:
+        openfeature.dev/enabled: 'true'
+        openfeature.dev/featureflagsource: 'flag-sources'
+    spec:
+      containers:
+        - name: open-feature-demo
+          image: demo-04-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+---
+# Service to expose our application
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-feature-demo-app-service
+  labels:
+    app: open-feature-demo
+spec:
+  type: NodePort
+  selector:
+    app: open-feature-demo
+  ports:
+    - port: 30000
+      targetPort: 5005
+      nodePort: 30000

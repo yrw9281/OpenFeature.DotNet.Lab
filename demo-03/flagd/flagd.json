@@ -15,7 +15,7 @@
               {
                 "var": "email"
               },
-              "@company.com"
+              "@test.company.com"
             ]
           },
           "on"
