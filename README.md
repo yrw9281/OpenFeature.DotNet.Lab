@@ -1,4 +1,4 @@
-# openfeature-flagd-with-dotnet-demo
+# Openfeature Turtorial with Flagd and .NET
 
 Demo project showcasing OpenFeature's Flagd integration with a .NET application for dynamic feature management and efficient deployment.
 
@@ -6,7 +6,7 @@ Demo project showcasing OpenFeature's Flagd integration with a .NET application 
 
 1. **Mac or Linux recommended**
 
-I preferred use the Mac or Linux to run this demo since flagd has some issues with WSL/Hyper-V in windows system. Here is the description:
+I preferred use the Mac or Linux to run this demo since Flagd has some issues with WSL/Hyper-V in windows system. Here is the description:
 
 > use docker:
     _Note - In Windows, use WSL system for both the file location and Docker runtime. Mixed file systems don't work and this is a [limitation of Docker (https://github.com/docker/for-win/issues/8479)_
@@ -21,7 +21,7 @@ To avoid polluting your development environment, you can use a DevContainer conf
 
 ## DEMO 01 - Flagd Provide by File
 
-This demo shows the simplest case for the integration of OpenFeature and flagd.
+This demo shows the simplest case for the integration of OpenFeature and Flagd.
 
 1. **Start**:
 
@@ -32,11 +32,11 @@ docker compose up -d
 
 2. **Check**
 
-You can change the `defaultVariant` to `off` in flagd.json and check the result change on http://localhost:5001.
+You can change the `defaultVariant` to `off` in Flagd.json and check the result change on http://localhost:5001.
 
 ## DEMO 02 - Flagd Provide by Api
  
-This demo shows the flagd can use API as data source.
+This demo shows the Flagd can use API as data source.
 
 1. **Start**:
 
@@ -47,7 +47,7 @@ docker compose up -d
 
 2. **Check**
 
-You can change the `defaultVariant` to `off` in flagd.json and check the result change on http://localhost:5003.
+You can change the `defaultVariant` to `off` in Flagd.json and check the result change on http://localhost:5003.
 
 
 ## DEMO 03 - OpenFeature Evaluation Context
