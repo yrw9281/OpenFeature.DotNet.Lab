@@ -11,11 +11,15 @@ await OpenFeature.Api.Instance.SetProviderAsync(flagdProvider);
 
 var client = OpenFeature.Api.Instance.GetClient("my-app");
 
-var val = await client.GetBooleanValue("feature-a", false, null);
+app.MapGet("/", async () => {
 
-if (val)
-    app.MapGet("/", () => "Hello the whole new world!");
-else
-    app.MapGet("/", () => "Hello World!");
+    // Get the flag
+    var flag = await client.GetBooleanValue("feature-a", false, null);
+
+    if (flag)
+        return "Hello the whole new world!";
+    else 
+        return "Hello World!";
+});
 
 app.Run();

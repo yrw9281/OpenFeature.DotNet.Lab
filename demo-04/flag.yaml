@@ -8,11 +8,17 @@ metadata:
 spec:
   flagSpec:
     flags:
-      experiment:
+      feature-a:
         variants:
           'on': true
           'off': false
         defaultVariant: 'on'
+        state: ENABLED
+      experiment:
+        variants:
+          'on': true
+          'off': false
+        defaultVariant: 'off'
         state: ENABLED
         targeting:
           if:
@@ -20,12 +26,6 @@ spec:
                 - var: email
                 - "@test.company.com"
             - 'on'
-      test:
-        variants:
-          'on': true
-          'off': false
-        defaultVariant: 'on'
-        state: ENABLED
 ---
 # Feature flag source custom resource, configuring flagd to source flags from FeatureFlag CRDs
 apiVersion: core.openfeature.dev/v1beta1
