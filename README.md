@@ -1,27 +1,29 @@
-# Openfeature Turtorial with Flagd and .NET
+# Openfeature Demo and Turtorial with Flagd and .NET
 
-Demo project showcasing OpenFeature's Flagd integration with a .NET application for dynamic feature management and efficient deployment.
+This demo project showcases the integration of OpenFeature's Flagd with a .NET application for feature toggle management.
 
-## Preparation
+## Prerequisites
 
 1. **Mac or Linux recommended**
 
-I preferred use the Mac or Linux to run this demo since Flagd has some issues with WSL in windows system. Here is the description:
+Prefer to use Mac or Linux to run this demo since Flagd has some issues with WSL in the Windows system. Here is the description:
 
 > use docker:
-    _Note - In Windows, use WSL system for both the file location and Docker runtime. Mixed file systems don't work and this is a [limitation of Docker (https://github.com/docker/for-win/issues/8479)_
+    _Note - In Windows, use WSL system for both the file location and Docker runtime. Mixed file systems don't work and this is a limitation of Docker (https://github.com/docker/for-win/issues/8479)_
+
+> _reference: https://github.com/open-feature/flagd_
 
 2. **Docker**
 
-Make sure you installed docker in your device.
+Ensure Docker is installed on your device.
 
 3. **VSCode recommended**
 
-To avoid polluting your development environment, you can use a DevContainer configuration in Visual Studio Code (VSCode).
+Recommended to use a DevContainer in VSCode to avoid polluting your development environment.
 
-## DEMO 01 - Flagd Provide by File
+## DEMO 01 - Flagd Provided by File
 
-This demo shows the simplest case for the integration of OpenFeature and Flagd.
+This demo demonstrates the basic integration of OpenFeature and Flagd.
 
 1. **Start**:
 
@@ -34,9 +36,9 @@ docker compose up -d
 
 You can change the `defaultVariant` to `off` in Flagd.json and check the result change on http://localhost:5001.
 
-## DEMO 02 - Flagd Provide by Api
+## DEMO 02 - Flagd Provided by Api
  
-This demo shows the Flagd can use API as data source.
+This demo shows how Flagd can use an API as a data source.
 
 1. **Start**:
 
@@ -49,10 +51,9 @@ docker compose up -d
 
 You can change the `defaultVariant` to `off` in Flagd.json and check the result change on http://localhost:5003.
 
-
 ## DEMO 03 - OpenFeature Evaluation Context
 
-This demo shows how the Evaluation Context works in OpenFeature and Flagd. Additionally, providing the A/B performance test case with Prometheus and Grafana.
+This demo demonstrates how the Evaluation Context works in OpenFeature and Flagd, including an A/B performance test using Prometheus and Grafana.
 
 1. **Start**:
 
@@ -74,7 +75,7 @@ Go to Dashboards -> Experiment and Normal API Latency. You can see the A/B perfo
 
 ## DEMO 04 - OpenFeature on Kubenetes
 
-This demo shows how to create a minikube cluster in docker and setup the open-feature-operator to use.
+This demo shows how to set up a Minikube cluster in Docker and deploy the open-feature-operator.
 
 > refernce: https://openfeature.dev/docs/tutorials/open-feature-operator/quick-start
 
@@ -206,7 +207,7 @@ kubectl -n default apply -f flag.yaml
 
 3. **Check**
 
-You can check the result on browser or run test scripts.
+Verify the changes in the browser or by running the test scripts.
 
 ```bash
 ./test.sh
