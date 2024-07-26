@@ -17,9 +17,9 @@ Prefer to use Mac or Linux to run this demo since Flagd has some issues with WSL
 
 Ensure Docker is installed on your device.
 
-3. **VSCode recommended**
+3. **DevContainer recommended**
 
-Recommended to use a DevContainer in VSCode to avoid polluting your development environment.
+Recommended to use a DevContainer in VSCode or GitHub Codespaces to avoid polluting your development environment.
 
 ## DEMO 01 - Flagd Provided by File
 
