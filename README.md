@@ -6,7 +6,7 @@ Demo project showcasing OpenFeature's Flagd integration with a .NET application 
 
 1. **Mac or Linux recommended**
 
-I preferred use the Mac or Linux to run this demo since Flagd has some issues with WSL/Hyper-V in windows system. Here is the description:
+I preferred use the Mac or Linux to run this demo since Flagd has some issues with WSL in windows system. Here is the description:
 
 > use docker:
     _Note - In Windows, use WSL system for both the file location and Docker runtime. Mixed file systems don't work and this is a [limitation of Docker (https://github.com/docker/for-win/issues/8479)_
@@ -156,7 +156,7 @@ kubectl -n default apply -f app.yaml
 #kubectl -n default delete -f app.yaml
 ```
 
-4. **Check the Pod is Running**4
+4. **Check the Pod is Running**
 
 ```bash
 kubectl -n default get pods -l app=open-feature-demo
@@ -165,7 +165,7 @@ kubectl -n default get pods -l app=open-feature-demo
 5. **Port Forward**
 
 ```bash
-kubectl port-forward services/open-feature-demo-app-service 30000:5005
+kubectl port-forward services/open-feature-demo-app-service 30000:30000
 ```
 
 ### Test the result
